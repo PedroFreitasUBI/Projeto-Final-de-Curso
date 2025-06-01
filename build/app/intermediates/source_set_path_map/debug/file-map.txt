@@ -1,0 +1,33 @@
+com.example.iot_app-appcompat-1.4.2-0 C:\Users\ACER\.gradle\caches\transforms-3\23f34eb679aa78d319ba4cd6be929827\transformed\appcompat-1.4.2\res
+com.example.iot_app-jetified-window-1.0.0-beta04-1 C:\Users\ACER\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\res
+com.example.iot_app-jetified-security-crypto-1.1.0-alpha06-2 C:\Users\ACER\.gradle\caches\transforms-3\2dd5e7ab9230030ff78143f5215ea597\transformed\jetified-security-crypto-1.1.0-alpha06\res
+com.example.iot_app-jetified-appcompat-resources-1.4.2-3 C:\Users\ACER\.gradle\caches\transforms-3\38a9a6cdcae139f766ff4a425b10d775\transformed\jetified-appcompat-resources-1.4.2\res
+com.example.iot_app-jetified-zxing-android-embedded-4.3.0-4 C:\Users\ACER\.gradle\caches\transforms-3\421d44eefcaeaaf501208e31a906b756\transformed\jetified-zxing-android-embedded-4.3.0\res
+com.example.iot_app-jetified-startup-runtime-1.0.0-5 C:\Users\ACER\.gradle\caches\transforms-3\51ebb132c7fa329ff7b390804f6d4148\transformed\jetified-startup-runtime-1.0.0\res
+com.example.iot_app-jetified-savedstate-1.1.0-6 C:\Users\ACER\.gradle\caches\transforms-3\5210929c6bf1b640a57ff02b8ff864f4\transformed\jetified-savedstate-1.1.0\res
+com.example.iot_app-jetified-core-ktx-1.10.1-7 C:\Users\ACER\.gradle\caches\transforms-3\719af8deb3ed6174d87dbb6013e12a44\transformed\jetified-core-ktx-1.10.1\res
+com.example.iot_app-fragment-1.3.6-8 C:\Users\ACER\.gradle\caches\transforms-3\86302acde65cdee925f535b0bf1f911d\transformed\fragment-1.3.6\res
+com.example.iot_app-lifecycle-runtime-2.4.0-9 C:\Users\ACER\.gradle\caches\transforms-3\8b0701ddf8e6425246b70e14fe9cd6cc\transformed\lifecycle-runtime-2.4.0\res
+com.example.iot_app-jetified-annotation-experimental-1.3.0-10 C:\Users\ACER\.gradle\caches\transforms-3\937d6edc8055f6701a18eeac1a67afe6\transformed\jetified-annotation-experimental-1.3.0\res
+com.example.iot_app-jetified-emoji2-1.0.0-11 C:\Users\ACER\.gradle\caches\transforms-3\a282641d604ecb4ae5332e32c2c94657\transformed\jetified-emoji2-1.0.0\res
+com.example.iot_app-jetified-window-java-1.0.0-beta04-12 C:\Users\ACER\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.iot_app-core-1.10.1-13 C:\Users\ACER\.gradle\caches\transforms-3\c4988ff80110f75080a936fc6f044848\transformed\core-1.10.1\res
+com.example.iot_app-jetified-emoji2-views-helper-1.0.0-14 C:\Users\ACER\.gradle\caches\transforms-3\ce706fb8171f1e87b711ab97547bd840\transformed\jetified-emoji2-views-helper-1.0.0\res
+com.example.iot_app-browser-1.5.0-15 C:\Users\ACER\.gradle\caches\transforms-3\d12883dde0390e08dd2a1192741cec1b\transformed\browser-1.5.0\res
+com.example.iot_app-lifecycle-viewmodel-2.3.1-16 C:\Users\ACER\.gradle\caches\transforms-3\d486eee418567504419697de2b3eb487\transformed\lifecycle-viewmodel-2.3.1\res
+com.example.iot_app-jetified-lifecycle-process-2.4.0-17 C:\Users\ACER\.gradle\caches\transforms-3\f31cdfb213b879077c244df043816118\transformed\jetified-lifecycle-process-2.4.0\res
+com.example.iot_app-debug-18 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\android\app\src\debug\res
+com.example.iot_app-main-19 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\android\app\src\main\res
+com.example.iot_app-pngs-20 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\app\generated\res\pngs\debug
+com.example.iot_app-resValues-21 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\app\generated\res\resValues\debug
+com.example.iot_app-rs-22 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\app\generated\res\rs\debug
+com.example.iot_app-mergeDebugResources-23 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.iot_app-mergeDebugResources-24 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.iot_app-merged_res-25 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\app\intermediates\merged_res\debug
+com.example.iot_app-packaged_res-26 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\flutter_secure_storage\intermediates\packaged_res\debug
+com.example.iot_app-packaged_res-27 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\path_provider_android\intermediates\packaged_res\debug
+com.example.iot_app-packaged_res-28 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\permission_handler_android\intermediates\packaged_res\debug
+com.example.iot_app-packaged_res-29 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\qr_code_scanner\intermediates\packaged_res\debug
+com.example.iot_app-packaged_res-30 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\share_plus\intermediates\packaged_res\debug
+com.example.iot_app-packaged_res-31 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\shared_preferences_android\intermediates\packaged_res\debug
+com.example.iot_app-packaged_res-32 C:\Users\ACER\Documents\Uni_trabalhos\Projeto Final\iot_app\build\url_launcher_android\intermediates\packaged_res\debug
