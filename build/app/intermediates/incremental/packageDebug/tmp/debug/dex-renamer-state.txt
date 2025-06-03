@@ -1,4 +1,4 @@
-#Thu May 29 15:08:38 WEST 2025
+#Mon Jun 02 17:26:26 WEST 2025
 base.0=C\:\\Users\\ACER\\Documents\\Uni_trabalhos\\Projeto Final\\iot_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 base.1=C\:\\Users\\ACER\\Documents\\Uni_trabalhos\\Projeto Final\\iot_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 path.0=classes.dex

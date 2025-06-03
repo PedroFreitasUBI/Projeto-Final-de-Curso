@@ -171,14 +171,14 @@ class _GraphsPageState extends State<GraphsPage> {
     try {
       final endDate = DateTime.now();
       final startDate = endDate.subtract(Duration(days: 7));
-      
+
       final token = await AuthService.getAccessToken();
       final response = await http.get(
         Uri.parse('http://10.0.2.2:5000/api/measurements?'
           'station_id=$_selectedDevice'
           '&type=$_selectedMeasurement'
-          '&start=${startDate.toIso8601String()}'
-          '&end=${endDate.toIso8601String()}'),
+          '&start=${startDate.millisecondsSinceEpoch ~/ 1000}'
+          '&end=${endDate.millisecondsSinceEpoch ~/ 1000}'),
         headers: {'Authorization': 'Bearer $token'},
       );
 
@@ -186,8 +186,8 @@ class _GraphsPageState extends State<GraphsPage> {
         final List<dynamic> data = jsonDecode(response.body);
         setState(() {
           _graphData = data.map((point) => FlSpot(
-            point['x'].toDouble(),
-            point['y'].toDouble(),
+            (point['x'] as num).toDouble(),
+            (point['y'] as num).toDouble(),
           )).toList();
         });
       }

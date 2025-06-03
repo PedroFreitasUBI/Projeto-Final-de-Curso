@@ -107,7 +107,7 @@ def receive_iot_data():
     print(f"Received IoT data: {data}")
 
     station_id = data.get('station_id')
-    location = data.get('location', None)
+    location = data.get('location_name', None)
     measurements = data.get('measurements', [])
 
     if not station_id or not measurements:
@@ -121,7 +121,7 @@ def receive_iot_data():
         cursor.execute("SELECT 1 FROM iot_stations WHERE station_id = %s", (station_id,))
         if not cursor.fetchone():
             cursor.execute(
-                "INSERT INTO iot_stations (station_id, location) VALUES (%s, %s)",
+                "INSERT INTO iot_stations (station_id, location_name) VALUES (%s, %s)",
                 (station_id, location)
             )
 
@@ -129,9 +129,13 @@ def receive_iot_data():
         for m in measurements:
             m_type = m.get('type')
             value = m.get('value')
-            recorded_at = m.get('recorded_at')  # Deve ser string no formato 'YYYY-MM-DD HH:MM:SS'
+            recorded_at = m.get('recorded_at')
             if not (m_type and value is not None and recorded_at):
-                continue  # Pula medições incompletas
+                continue
+
+            # Se recorded_at for inteiro (timestamp), converte para string
+            if isinstance(recorded_at, int) or (isinstance(recorded_at, str) and recorded_at.isdigit()):
+                recorded_at = datetime.fromtimestamp(int(recorded_at)).strftime('%Y-%m-%d %H:%M:%S')
 
             cursor.execute(
                 "INSERT INTO measurements (station_id, measurement_type, value, recorded_at) VALUES (%s, %s, %s, %s)",
@@ -517,4 +521,4 @@ def logout(current_user):
     return jsonify({"status": "success"}), 200
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
