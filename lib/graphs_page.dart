@@ -28,6 +28,8 @@ class _GraphsPageState extends State<GraphsPage> {
   Map<String, List<String>> _measurementUnits = {};
   List<FlSpot> _graphData = [];
   bool _isGraphLoading = false;
+  DateTime? _startDate;
+  DateTime? _endDate;
 
   final Map<String, Map<String, double Function(double)>> _unitConverters = {
     'temperature': {
@@ -124,6 +126,9 @@ class _GraphsPageState extends State<GraphsPage> {
   @override
   void initState() {
     super.initState();
+    final now = DateTime.now();
+    _endDate = now;
+    _startDate = now.subtract(Duration(days: 7));
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadData().then((_) => _fetchGraphData());
     });
@@ -169,16 +174,16 @@ class _GraphsPageState extends State<GraphsPage> {
     setState(() => _isGraphLoading = true);
 
     try {
-      final endDate = DateTime.now();
-      final startDate = endDate.subtract(Duration(days: 7));
-
       final token = await AuthService.getAccessToken();
+      final start = _startDate ?? DateTime.now().subtract(Duration(days: 7));
+      final end = _endDate ?? DateTime.now();
+
       final response = await http.get(
         Uri.parse('http://10.0.2.2:5000/api/measurements?'
-          'station_id=$_selectedDevice'
-          '&type=$_selectedMeasurement'
-          '&start=${startDate.millisecondsSinceEpoch ~/ 1000}'
-          '&end=${endDate.millisecondsSinceEpoch ~/ 1000}'),
+          'station_id=${_selectedDevice!}'
+          '&type=${_selectedMeasurement!}'
+          '&start=${start.millisecondsSinceEpoch ~/ 1000}'
+          '&end=${end.millisecondsSinceEpoch ~/ 1000}'),
         headers: {'Authorization': 'Bearer $token'},
       );
 
@@ -355,6 +360,73 @@ class _GraphsPageState extends State<GraphsPage> {
                   SizedBox(height: 20),
                 ],
               ),
+            // Date Range Picker
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      final picked = await showDatePicker(
+                        context: context,
+                        initialDate: _startDate ?? DateTime.now(),
+                        firstDate: DateTime(2020),
+                        lastDate: _endDate ?? DateTime.now(),
+                      );
+                      if (picked != null && picked != _startDate) {
+                        setState(() {
+                          _startDate = picked;
+                        });
+                        _fetchGraphData();
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF465172),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Color(0xFF7086C7)),
+                      ),
+                      child: Text(
+                        'Start: ${_startDate != null ? DateFormat('yyyy-MM-dd').format(_startDate!) : ''}',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      final picked = await showDatePicker(
+                        context: context,
+                        initialDate: _endDate ?? DateTime.now(),
+                        firstDate: _startDate ?? DateTime(2020),
+                        lastDate: DateTime.now(),
+                      );
+                      if (picked != null && picked != _endDate) {
+                        setState(() {
+                          _endDate = picked;
+                        });
+                        _fetchGraphData();
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF465172),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Color(0xFF7086C7)),
+                      ),
+                      child: Text(
+                        'End: ${_endDate != null ? DateFormat('yyyy-MM-dd').format(_endDate!) : ''}',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
             // graph widget
             Container(
               height: 300,

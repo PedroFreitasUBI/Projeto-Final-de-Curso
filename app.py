@@ -340,7 +340,7 @@ def get_measurements(current_user):
 
         # Convert UNIX timestamps to datetime objects
         start_date = datetime.fromtimestamp(int(start_timestamp))
-        end_date = datetime.fromtimestamp(int(end_timestamp))
+        end_date = datetime.fromtimestamp(int(end_timestamp)) + timedelta(days=1)
         print(f"Start Date: {start_date}, End Date: {end_date}")
 
         # Verify user has access to this station
