@@ -12,28 +12,27 @@ class _RegisterPageState extends State<RegisterPage> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController(); 
 
   Future<void> _register() async {
     if (_formKey.currentState!.validate()) {
       try {
         final response = await http.post(
-          Uri.parse('http://10.0.2.2:5000/register'),  // Replace <YOUR_IP> with your computer's IP
+          Uri.parse('http://10.0.2.2:5000/register'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             'username': _usernameController.text,
             'email': _emailController.text,
             'password': _passwordController.text,
-            'type': 1,  // Default to regular user
+            'type': 1,
           }),
         );
 
         if (response.statusCode == 201) {
           print('Registration successful');
-          // Navigate back to the login page
           Navigator.pop(context);
         } else {
           print('Registration failed: ${response.body}');
-          // Show an error message
         }
       } catch (e) {
         print('Error: $e');
@@ -44,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,  // No top bar
+      appBar: null,
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -107,10 +106,31 @@ class _RegisterPageState extends State<RegisterPage> {
                       return null;
                     },
                   ),
+                  TextFormField(
+                    controller: _confirmPasswordController,
+                    decoration: InputDecoration(
+                      labelText: 'Confirm Password',
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                    style: TextStyle(color: Colors.white),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please confirm your password';
+                      }
+                      if (value != _passwordController.text) {
+                        return 'Passwords do not match';
+                      }
+                      return null;
+                    },
+                  ),
                   SizedBox(height: 20),
                   SizedBox(
-                    width: double.infinity,  // Make the button full width
-                    height: 50,  // Increase button height
+                    width: double.infinity,
+                    height: 50,
                     child: ElevatedButton(
                       onPressed: _register,
                       child: Text('Register'),

@@ -88,7 +88,7 @@ class _GraphsPageState extends State<GraphsPage> {
         Uri.parse('http://10.0.2.2:5000/api/measurements?'
           'station_id=${_selectedDevice!}'
           '&type=${_selectedMeasurement!}'
-          '&start=${DateTime.now().subtract(Duration(days: 7)).millisecondsSinceEpoch ~/ 1000}'
+          '&start=${DateTime.now().subtract(Duration(days: 1)).millisecondsSinceEpoch ~/ 1000}'
           '&end=${DateTime.now().millisecondsSinceEpoch ~/ 1000}'),
         headers: {'Authorization': 'Bearer $token'},
       );
@@ -126,9 +126,10 @@ class _GraphsPageState extends State<GraphsPage> {
   @override
   void initState() {
     super.initState();
-    final now = DateTime.now();
-    _endDate = now;
-    _startDate = now.subtract(Duration(days: 7));
+    _startDate = DateTime(2025, 6, 1); // 1 de junho de 2025
+    _endDate = DateTime(2025, 6, 2);   // 2 de junho de 2025
+    _selectedDevice = "stationGardunha";
+    _selectedMeasurement = "temperature";
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadData().then((_) => _fetchGraphData());
     });
@@ -141,9 +142,9 @@ class _GraphsPageState extends State<GraphsPage> {
       
       setState(() {
         _allDevices = stations;
-        _selectedDevice = stations.isNotEmpty ? stations.first : null;
         _measurementUnits = measurements;
-        _selectedMeasurement = measurements.keys.isNotEmpty ? measurements.keys.first : null;
+        _selectedDevice = stations.contains("stationGardunha") ? "stationGardunha" : (stations.isNotEmpty ? stations.first : null);
+        _selectedMeasurement = measurements.keys.contains("temperature") ? "temperature" : (measurements.keys.isNotEmpty ? measurements.keys.first : null);
         _selectedUnit = _selectedMeasurement != null && measurements[_selectedMeasurement]!.isNotEmpty 
             ? measurements[_selectedMeasurement]!.first 
             : null;
@@ -175,7 +176,7 @@ class _GraphsPageState extends State<GraphsPage> {
 
     try {
       final token = await AuthService.getAccessToken();
-      final start = _startDate ?? DateTime.now().subtract(Duration(days: 7));
+      final start = _startDate ?? DateTime.now().subtract(Duration(days: 1));
       final end = _endDate ?? DateTime.now();
 
       final response = await http.get(
